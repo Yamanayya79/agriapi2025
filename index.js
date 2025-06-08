@@ -69,10 +69,10 @@ const upload = multer({ storage });
 
 // database detiles
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'agriyama'
+  host: 'sql10.freesqldatabase.com',
+  user: 'sql10783711',
+  password: 'dj3lZmYS6G',
+  database: 'sql10783711'
 });
 // db connection
 db.connect((error) => {
