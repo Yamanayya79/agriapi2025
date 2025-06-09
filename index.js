@@ -13,6 +13,7 @@ const { error } = require('console');
 const bcrypt = require('bcrypt');
 const { getMaxListeners } = require('events');
 const cookieParser = require('cookie-parser');
+
 const PORT =process.env.PORT || 5000
 // let password;
 // let plainPassword ;
@@ -73,6 +74,8 @@ const db = mysql.createConnection({
   user: 'sql10783711',
   password: 'dj3lZmYS6G',
   database: 'sql10783711'
+  waitForConnections:true,
+  queueLimit:0
 });
 // db connection
 db.connect((error) => {
