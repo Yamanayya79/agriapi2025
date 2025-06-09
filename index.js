@@ -77,7 +77,7 @@ const db = mysql.createConnection({
   waitForConnections:true,
   queueLimit:0
 });
-// db connection
+
 db.connect((error) => {
   if (error) {
     console.log('error while connecting db')
