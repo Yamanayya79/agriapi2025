@@ -23,7 +23,7 @@ const PORT =process.env.PORT || 5000
 
 // app.use(cors());
 app.use(cors({
-  origin: 'https://nandiagri2025-git-main-yamanayyas-projects.vercel.app/', // frontend URL
+  origin: 'https://nandiagri2025-git-main-yamanayyas-projects.vercel.app', // frontend URL
   credentials: true
 }));
 // app.use(express.json());
