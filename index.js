@@ -24,8 +24,8 @@ const PORT =process.env.PORT || 5000
 
 // app.use(cors());
 app.use(cors({
-  origin: '*', // frontend URL
-  
+  origin: 'https://nandiagri2025-git-main-yamanayyas-projects.vercel.app',
+  credentials: true
 }));
 // app.use(express.json());
 app.use(cookieParser()); // Use cookie-parser to handle cookies
@@ -69,22 +69,26 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // database detiles
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: 'sql10.freesqldatabase.com',
   user: 'sql10783711',
   password: 'dj3lZmYS6G',
-  database: 'sql10783711'
-  waitForConnections:true,
-  queueLimit:0
+  database: 'sql10783711',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-db.connect((error) => {
-  if (error) {
-    console.log('error while connecting db')
-    process.exit(1)
+db.getConnection((err, connection) => {
+  if (err) {
+    console.error('DB connection failed:', err.message);
+  } else {
+    console.log('✅ DB connected successfully');
+    connection.release(); // release back to pool
   }
-  console.log('db connected')
-})
+});
+
+module.exports = db;
 
 app.get('/', (req, res) => {
   res.send('All agri api hear..')
